@@ -415,31 +415,32 @@ const PCard = ({ name, pr, oldPr, rating, rev, badge, cur }) => {
   const cc = currencies.find(c => c.code === cur);
   const p = pr[cur] || pr.AED;
   const op = oldPr ? (oldPr[cur] || oldPr.AED) : null;
+  const teaser = `Comfort care for ${name.toLowerCase().split(" ").slice(0, 2).join(" ")}.`;
   return (
-    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{ background: C.white, borderRadius: 12, overflow: "hidden", border: `1px solid ${hov ? C.brand + "28" : C.g100}`, transition: "all .3s", transform: hov && !mob ? "translateY(-4px)" : "none", boxShadow: hov && !mob ? `0 12px 36px ${C.brand}10` : "0 1px 4px rgba(0,0,0,.03)" }}>
-      <div style={{ position: "relative", background: C.g50, height: mob ? 180 : 210, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-        <div style={{ width: 80, height: 120, borderRadius: 8, background: `linear-gradient(145deg, ${C.brandFaint}, ${C.g100})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <img src={LOGO} alt="COSMO" style={{ height: 20, opacity: .5 }} />
+    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{ background: C.white, borderRadius: 10, overflow: "hidden", border: `1px solid ${hov ? C.brand + "30" : C.g100}`, transition: "all .3s", transform: hov && !mob ? "translateY(-3px)" : "none", boxShadow: hov && !mob ? "0 10px 24px rgba(0,0,0,.08)" : "0 1px 4px rgba(0,0,0,.03)" }}>
+      <div style={{ position: "relative", background: C.white, height: mob ? 150 : 185, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+        <div style={{ width: mob ? 94 : 108, height: mob ? 126 : 150, borderRadius: 10, background: `linear-gradient(160deg, #ffffff, ${C.g100})`, border: `1px solid ${C.g100}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src={LOGO} alt="COSMO" style={{ height: mob ? 21 : 24, opacity: .55 }} />
         </div>
-        {badge && <span style={{ position: "absolute", top: 8, left: 8, background: badge === "New" ? C.green : badge === "Top Rated" ? C.gold : C.accent, color: C.white, fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 30, fontFamily: font }}>{badge}</span>}
-        <button style={{ position: "absolute", top: 8, right: 8, background: C.white, border: "none", borderRadius: "50%", width: 30, height: 30, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 2px 6px rgba(0,0,0,.06)" }}><Ic.Heart s={13} c={C.g300} /></button>
-        {!mob && <button style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: C.brand, color: C.white, border: "none", padding: "10px", fontSize: 11.5, fontWeight: 700, cursor: "pointer", fontFamily: font, letterSpacing: ".05em", transform: `translateY(${hov ? 0 : "100%"})`, transition: "transform .3s" }}>ADD TO CART</button>}
+        {badge && <span style={{ position: "absolute", top: 8, left: 8, background: "#E53935", color: C.white, fontSize: 9.5, fontWeight: 700, padding: "2px 8px", borderRadius: 4, fontFamily: font }}>{badge}</span>}
+        <button style={{ position: "absolute", top: 8, right: 8, background: C.white, border: "none", borderRadius: "50%", width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 2px 6px rgba(0,0,0,.06)" }}><Ic.Heart s={12} c={C.g300} /></button>
       </div>
-      <div style={{ padding: mob ? "10px 12px 14px" : "12px 14px 16px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 4 }}><Stars r={rating} s={10} /><span style={{ fontFamily: font, fontSize: 10.5, color: C.g400 }}>({rev})</span></div>
-        <h3 style={{ fontFamily: font, fontSize: mob ? 12.5 : 13, fontWeight: 600, color: C.g800, lineHeight: 1.35, marginBottom: 8, minHeight: mob ? 32 : 36 }}>{name}</h3>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <span style={{ fontFamily: font, fontSize: mob ? 14 : 15, fontWeight: 700, color: C.brand }}>{cc.sym} {p.toFixed(2)}</span>
-          {op && <span style={{ fontFamily: font, fontSize: 11.5, color: C.g400, textDecoration: "line-through" }}>{cc.sym} {op.toFixed(2)}</span>}
+      <div style={{ padding: mob ? "8px 10px 12px" : "10px 12px 14px", minHeight: mob ? 150 : 170 }}>
+        <h3 style={{ fontFamily: font, fontSize: mob ? 12 : 13, fontWeight: 600, color: C.g800, lineHeight: 1.35, marginBottom: 4, minHeight: mob ? 32 : 36 }}>{name}</h3>
+        <p style={{ fontFamily: font, fontSize: mob ? 10.5 : 11, color: C.g500, lineHeight: 1.4, margin: "0 0 6px", minHeight: mob ? 26 : 30 }}>{teaser}</p>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+          <span style={{ fontFamily: font, fontSize: mob ? 13 : 14, fontWeight: 700, color: "#D44563" }}>From {cc.sym} {p.toFixed(2)}</span>
+          {op && <span style={{ fontFamily: font, fontSize: 11, color: C.g400, textDecoration: "line-through" }}>{cc.sym} {op.toFixed(2)}</span>}
         </div>
-        {mob && <button style={{ width: "100%", marginTop: 8, background: C.brand, color: C.white, border: "none", padding: "9px", borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: font }}>Add to Cart</button>}
+        <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 10 }}><Stars r={rating} s={10} /><span style={{ fontFamily: font, fontSize: 10.5, color: C.g600 }}>{rev} reviews</span></div>
+        <button style={{ width: "100%", background: "#07080C", color: C.white, border: "none", padding: mob ? "9px" : "10px", borderRadius: 8, fontSize: 11.5, fontWeight: 700, cursor: "pointer", fontFamily: font, letterSpacing: ".04em" }}>ADD TO CART</button>
       </div>
     </div>
   );
 };
 
 // ═══ BESTSELLERS ═══
-const Bestsellers = ({ cur }) => { const { mob, tab } = useVP(); return (<section style={{ padding: mob ? "40px 0" : "64px 0", background: C.white }}><div style={wrap(mob)}><SH label="Most Loved" title="Bestsellers" sub="Trusted by 10M+ customers worldwide" /><div style={{ display: "grid", gridTemplateColumns: `repeat(${mob ? 2 : tab ? 3 : 4}, 1fr)`, gap: mob ? 10 : 20 }}>{PRODUCTS.slice(0, mob ? 4 : 8).map(p => <PCard key={p.id} {...p} cur={cur} />)}</div><div style={{ textAlign: "center", marginTop: mob ? 24 : 40 }}><button style={{ background: "transparent", border: `2px solid ${C.brand}`, color: C.brand, borderRadius: 50, padding: mob ? "11px 24px" : "12px 32px", fontSize: 13, fontWeight: 700, fontFamily: font, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6 }}>View All <Ic.Arr s={13} /></button></div></div></section>); };
+const Bestsellers = ({ cur }) => { const { mob, tab } = useVP(); return (<section style={{ padding: mob ? "28px 0" : "52px 0", background: C.white }}><div style={wrap(mob)}><SH label="Most Loved" title="BEST SELLING" sub="Discover top products customers keep coming back for." /><div style={{ display: "grid", gridTemplateColumns: `repeat(${mob ? 2 : tab ? 3 : 5}, 1fr)`, gap: mob ? 10 : 14 }}>{PRODUCTS.slice(0, mob ? 6 : 10).map(p => <PCard key={p.id} {...p} cur={cur} />)}</div><div style={{ textAlign: "center", marginTop: mob ? 20 : 28 }}><button style={{ background: "transparent", border: `2px solid ${C.brand}`, color: C.brand, borderRadius: 50, padding: mob ? "10px 22px" : "11px 28px", fontSize: 13, fontWeight: 700, fontFamily: font, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6 }}>View All <Ic.Arr s={13} /></button></div></div></section>); };
 
 // ═══ OUR BRANDS (compact) ═══
 const BrandsSection = ({ go }) => {
