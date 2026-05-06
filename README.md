@@ -64,12 +64,14 @@ Or ask Claude Code:
 
 ```
 cosmo-cosmetics-site/
+├── .github/workflows/     # CI deploy to Vercel (optional)
 ├── app/
 │   ├── layout.js          # Root layout + fonts
 │   ├── globals.css         # Reset + animations
 │   ├── page.js             # Entry point
 │   └── CosmoCosmetics.js   # Full site component
 ├── next.config.js           # Image domains config
+├── public/assets/            # Local banners/logos/thumbs
 ├── package.json
 └── README.md
 ```
@@ -85,21 +87,24 @@ cosmo-cosmetics-site/
 - ✅ Product cards with hover Add to Cart
 - ✅ Shop by Skin Concern with SVG icons
 - ✅ Testimonials, Stats, Newsletter, Footer
-- ✅ Images hosted on GitHub (cosmo-banners repo)
+- ✅ Local images in `public/assets` (stable paths for Vercel)
 
 ## Image Configuration
-All banner images load from your `FerozArshad/cosmo-banners` GitHub repo.
-To change image hosting, edit the `GH` constant at the top of `CosmoCosmetics.js`:
-
-```js
-// Current
-const GH = "https://raw.githubusercontent.com/FerozArshad/cosmo-banners/main/";
-
-// If you move to Cloudinary later
-const GH = "https://res.cloudinary.com/your-account/image/upload/cosmo/";
-```
+All banner/logo assets are served locally from `public/assets/...`.
 
 ## Auto-Deploy
+### Option A (recommended): Vercel Git Integration
+Connect the GitHub repo in Vercel and every push auto-deploys:
+- `main` → Production
+- other branches → Preview
+
+### Option B: GitHub Actions (included in this repo)
+This repo includes a workflow at `.github/workflows/vercel-deploy.yml` to deploy on every push.
+Add these GitHub repository secrets:
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
 Every time you push to `main` branch, Vercel auto-deploys. Just:
 ```bash
 git add .
