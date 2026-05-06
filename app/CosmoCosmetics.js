@@ -49,6 +49,23 @@ const bannerByDevice = (key, isMobileLike) => (
   isMobileLike ? (MOBILE_BANNERS[key] || BANNERS[key]) : BANNERS[key]
 );
 const LOGO = "/assets/logos/cosmo-main.png";
+const AR = { desktop: 1530 / 410, mobile: 430 / 480 };
+const bannerBoxStyle = (isMobileLike) => ({
+  position: "relative",
+  borderRadius: isMobileLike ? 12 : 20,
+  overflow: "hidden",
+  width: "100%",
+  aspectRatio: isMobileLike ? `${430} / ${480}` : `${1530} / ${410}`,
+  background: "#F2F0ED",
+  boxShadow: "0 4px 24px rgba(0,0,0,.08)",
+});
+const bannerImgStyle = {
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+  objectPosition: "center",
+  display: "block",
+};
 
 const C = {
   brand: "#2E2A6E", brandDark: "#1E1A50", brandLight: "#4842A8",
@@ -292,7 +309,9 @@ const Header = ({ page, go }) => {
                         <a href="#" onClick={e => { e.preventDefault(); go(ni.key); setHn(null); }} style={{ fontFamily: font, fontSize: 12, fontWeight: 700, color: C.brand, textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>View All {ni.label} <Ic.Arr s={12} c={C.brand} /></a>
                       </div>
                     </div>
-                    <div style={{ flex: 1, overflow: "hidden" }}><img src={bannerByDevice(cat.banner, false)} alt={cat.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+                    <div style={{ flex: 1, overflow: "hidden", background: "#F2F0ED" }}>
+                      <img src={bannerByDevice(cat.banner, false)} alt={cat.name} style={bannerImgStyle} />
+                    </div>
                   </div>
                 )}
               </div>
@@ -339,8 +358,8 @@ const Hero = () => {
 
   return (
     <section style={{ padding: mob ? "8px 8px" : "16px 28px", maxWidth: 1380, margin: "0 auto" }}>
-      <div style={{ position: "relative", borderRadius: mob ? 12 : 20, overflow: "hidden", height: mob || tab ? "85vh" : "70vh", maxHeight: mob ? 600 : 700, minHeight: mob ? 280 : 400, boxShadow: "0 4px 24px rgba(0,0,0,.08)" }}>
-        <img src={slides[c].b} alt={slides[c].n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block", transition: "opacity .5s" }} />
+      <div style={{ ...bannerBoxStyle(isMobileLike), maxHeight: isMobileLike ? 520 : 520, margin: "0 auto" }}>
+        <img src={slides[c].b} alt={slides[c].n} style={{ ...bannerImgStyle, transition: "opacity .5s" }} />
         {!mob && <>
           <button onClick={() => setC((c - 1 + slides.length) % slides.length)} style={{ position: "absolute", top: "50%", left: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevL s={22} /></button>
           <button onClick={() => setC((c + 1) % slides.length)} style={{ position: "absolute", top: "50%", right: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevR s={22} /></button>
@@ -411,7 +430,7 @@ const BrandsSection = ({ go }) => {
     { key: "glutathione", name: "Glutathione", color: C.purple, thumb: THUMBS.glutathione },
     { key: "hair", name: "Hair Naturals", color: "#1A3050", thumb: THUMBS.hair },
     { key: "hijab", name: "Hijab Care", color: C.g700, thumb: THUMBS.hijab },
-    { key: "q10", name: "Q10", color: "#1A3A6B", thumb: BANNERS.q10Sq },
+    { key: "q10", name: "Q10", color: "#1A3A6B", thumb: THUMBS.q10 },
     { key: "shea-scrub", name: "Shea Scrub", color: "#D46A2E", thumb: THUMBS.shea },
     { key: "suncare", name: "Sun Care", color: C.orange, thumb: THUMBS.sunCare },
     { key: "urea", name: "Urea", color: C.blue, thumb: THUMBS.urea },
@@ -477,14 +496,13 @@ const CategoryPage = ({ catKey, cur, go }) => {
   }
 
   const prods = PRODUCTS.filter(p => p.cats.includes(catKey));
-  // 85vh on mobile/tablet, 70vh on desktop for category banner too
-  const bannerH = mob || tab ? "65vh" : "50vh";
+  const isMobileLike = mob || tab;
 
   return (
     <section style={{ background: C.white }}>
       <div style={{ padding: mob ? "8px 8px" : "16px 28px", maxWidth: 1380, margin: "0 auto" }}>
-        <div style={{ borderRadius: mob ? 12 : 20, overflow: "hidden", height: bannerH, maxHeight: mob ? 400 : 500, minHeight: mob ? 200 : 300, position: "relative", boxShadow: "0 4px 24px rgba(0,0,0,.08)" }}>
-          <img src={bannerByDevice(cat.banner, mob || tab)} alt={cat.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+        <div style={{ ...bannerBoxStyle(isMobileLike), maxHeight: isMobileLike ? 420 : 420, margin: "0 auto" }}>
+          <img src={bannerByDevice(cat.banner, isMobileLike)} alt={cat.name} style={bannerImgStyle} />
         </div>
       </div>
       <div style={{ ...wrap(mob), padding: mob ? "16px 16px 40px" : "24px 28px 64px" }}>
