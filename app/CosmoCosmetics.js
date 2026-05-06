@@ -132,20 +132,20 @@ const Stars = ({ r, s = 11 }) => <span style={{ display: "inline-flex", gap: 1 }
 
 // ─── Concern SVG Icons ───
 const CIc = {
-  Drop: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round"><path d="M32 8C32 8 16 24 16 38a16 16 0 0032 0C48 24 32 8 32 8z" /><path d="M28 38a4 4 0 004 4" opacity=".5" /></svg>,
-  Pore: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round"><circle cx="32" cy="32" r="20" /><circle cx="32" cy="32" r="3" fill={c} stroke="none" /><circle cx="40" cy="26" r="2" fill={c} stroke="none" opacity=".6" /><circle cx="26" cy="38" r="2" fill={c} stroke="none" opacity=".4" /></svg>,
-  Face: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round"><path d="M32 12C22 12 16 20 16 32c0 12 6 20 16 20s16-8 16-20-6-20-16-20z" /><path d="M24 28q2-2 4 0M36 28q2-2 4 0" /><path d="M26 40q6 4 12 0" /></svg>,
-  Hrt: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round"><path d="M32 52C32 52 12 38 12 24c0-8 6-14 14-14 4 0 6 4 6 4s2-4 6-4c8 0 14 6 14 14 0 14-20 28-20 28z" /></svg>,
-  Sun: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round"><circle cx="32" cy="32" r="10" /><line x1="32" y1="8" x2="32" y2="14" /><line x1="32" y1="50" x2="32" y2="56" /><line x1="8" y1="32" x2="14" y2="32" /><line x1="50" y1="32" x2="56" y2="32" /><line x1="15" y1="15" x2="19" y2="19" /><line x1="45" y1="45" x2="49" y2="49" /><line x1="49" y1="15" x2="45" y2="19" /><line x1="19" y1="45" x2="15" y2="49" /></svg>,
-  Hair: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round"><path d="M32 14C22 14 16 22 16 32v4M48 36v-4C48 22 42 14 32 14" /><path d="M20 28q-2 8-2 16M26 26q-2 10-2 20M38 26q2 10 2 20M44 28q2 8 2 16" opacity=".6" /></svg>,
+  Drop: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="2.4" strokeLinecap="round"><path d="M32 8C32 8 16 24 16 38a16 16 0 0032 0C48 24 32 8 32 8z" /><path d="M28 38a4 4 0 004 4" opacity=".5" /></svg>,
+  Pore: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="2.4" strokeLinecap="round"><circle cx="32" cy="32" r="20" /><circle cx="32" cy="32" r="3" fill={c} stroke="none" /><circle cx="40" cy="26" r="2" fill={c} stroke="none" opacity=".6" /><circle cx="26" cy="38" r="2" fill={c} stroke="none" opacity=".4" /></svg>,
+  Face: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="2.4" strokeLinecap="round"><path d="M32 12C22 12 16 20 16 32c0 12 6 20 16 20s16-8 16-20-6-20-16-20z" /><path d="M24 28q2-2 4 0M36 28q2-2 4 0" /><path d="M26 40q6 4 12 0" /></svg>,
+  Hrt: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="2.4" strokeLinecap="round"><path d="M32 52C32 52 12 38 12 24c0-8 6-14 14-14 4 0 6 4 6 4s2-4 6-4c8 0 14 6 14 14 0 14-20 28-20 28z" /></svg>,
+  Sun: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="2.4" strokeLinecap="round"><circle cx="32" cy="32" r="10" /><line x1="32" y1="8" x2="32" y2="14" /><line x1="32" y1="50" x2="32" y2="56" /><line x1="8" y1="32" x2="14" y2="32" /><line x1="50" y1="32" x2="56" y2="32" /><line x1="15" y1="15" x2="19" y2="19" /><line x1="45" y1="45" x2="49" y2="49" /><line x1="49" y1="15" x2="45" y2="19" /><line x1="19" y1="45" x2="15" y2="49" /></svg>,
+  Hair: ({ s = 28, c }) => <svg width={s} height={s} viewBox="0 0 64 64" fill="none" stroke={c} strokeWidth="2.4" strokeLinecap="round"><path d="M32 14C22 14 16 22 16 32v4M48 36v-4C48 22 42 14 32 14" /><path d="M20 28q-2 8-2 16M26 26q-2 10-2 20M38 26q2 10 2 20M44 28q2 8 2 16" opacity=".6" /></svg>,
 };
 const concerns = [
-  { name: "Dryness", I: CIc.Drop, desc: "Deep hydration & barrier repair" },
-  { name: "Oily Skin", I: CIc.Pore, desc: "Oil control & mattifying" },
-  { name: "Anti-Aging", I: CIc.Face, desc: "Firming & collagen boost" },
-  { name: "Sensitivity", I: CIc.Hrt, desc: "Gentle soothing formulas" },
-  { name: "Brightening", I: CIc.Sun, desc: "Glow & even skin tone" },
-  { name: "Hair Fall", I: CIc.Hair, desc: "Strengthen & nourish" },
+  { name: "Dryness", I: CIc.Drop, desc: "Deep hydration & barrier repair", c: "#2E5B8A", bg: "#EAF3FF" },
+  { name: "Oily Skin", I: CIc.Pore, desc: "Oil control & mattifying", c: "#1F7A67", bg: "#E8F8F3" },
+  { name: "Anti-Aging", I: CIc.Face, desc: "Firming & collagen boost", c: "#8B5EA0", bg: "#F4ECFF" },
+  { name: "Sensitivity", I: CIc.Hrt, desc: "Gentle soothing formulas", c: "#D05774", bg: "#FFEFF4" },
+  { name: "Brightening", I: CIc.Sun, desc: "Glow & even skin tone", c: "#D99622", bg: "#FFF7E8" },
+  { name: "Hair Fall", I: CIc.Hair, desc: "Strengthen & nourish", c: "#2A4F7A", bg: "#EAF1FF" },
 ];
 
 // ─── Category Data ───
@@ -521,7 +521,61 @@ const BrandsSection = ({ go }) => {
 };
 
 // ═══ CONCERNS ═══
-const ConcernsSection = () => { const { mob } = useVP(); return (<section style={{ padding: mob ? "40px 0" : "64px 0", background: C.white }}><div style={wrap(mob)}><SH label="Targeted Solutions" title="Shop by Skin Concern" /><div style={{ display: "grid", gridTemplateColumns: `repeat(${mob ? 3 : 6}, 1fr)`, gap: mob ? 8 : 14 }}>{concerns.map((sc, i) => { const [hov, setHov] = useState(false); return (<a key={i} href="#" onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{ background: hov && !mob ? C.brand : C.white, border: `1px solid ${hov && !mob ? C.brand : C.g200}`, borderRadius: mob ? 10 : 12, padding: mob ? "16px 8px" : "28px 14px 24px", textAlign: "center", cursor: "pointer", transition: "all .3s", transform: hov && !mob ? "translateY(-3px)" : "none", boxShadow: hov && !mob ? `0 10px 28px ${C.brand}20` : "none", textDecoration: "none", position: "relative", overflow: "hidden" }}><div style={{ width: mob ? 44 : 60, height: mob ? 44 : 60, borderRadius: "50%", background: hov && !mob ? "rgba(255,255,255,.12)" : C.brandFaint, margin: "0 auto", marginBottom: mob ? 8 : 16, display: "flex", alignItems: "center", justifyContent: "center" }}><sc.I s={mob ? 22 : 28} c={hov && !mob ? C.white : C.brand} /></div><div style={{ fontFamily: serif, fontSize: mob ? 13 : 17, fontWeight: 700, color: hov && !mob ? C.white : C.brand, marginBottom: 3 }}>{sc.name}</div>{!mob && <p style={{ fontFamily: font, fontSize: 11, color: hov ? "rgba(255,255,255,.7)" : C.g500, margin: 0 }}>{sc.desc}</p>}</a>); })}</div></div></section>); };
+const ConcernsSection = () => {
+  const { mob } = useVP();
+  return (
+    <section style={{ padding: mob ? "34px 0" : "58px 0", background: C.white }}>
+      <div style={wrap(mob)}>
+        <SH label="Targeted Solutions" title="Shop by Skin Concern" />
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(${mob ? 2 : 6}, 1fr)`, gap: mob ? 10 : 14 }}>
+          {concerns.map((sc, i) => {
+            const [hov, setHov] = useState(false);
+            return (
+              <a
+                key={i}
+                href="#"
+                onMouseEnter={() => setHov(true)}
+                onMouseLeave={() => setHov(false)}
+                style={{
+                  background: hov ? sc.c : C.white,
+                  border: `1px solid ${hov ? sc.c : C.g200}`,
+                  borderRadius: 12,
+                  padding: mob ? "18px 10px 16px" : "26px 14px 20px",
+                  textAlign: "center",
+                  cursor: "pointer",
+                  transition: "all .28s",
+                  transform: hov && !mob ? "translateY(-3px)" : "none",
+                  boxShadow: hov ? `0 12px 28px ${sc.c}2B` : "0 2px 8px rgba(0,0,0,.03)",
+                  textDecoration: "none",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: mob ? 54 : 62,
+                    height: mob ? 54 : 62,
+                    borderRadius: "50%",
+                    background: hov ? "rgba(255,255,255,.16)" : sc.bg,
+                    margin: "0 auto",
+                    marginBottom: mob ? 9 : 14,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <sc.I s={mob ? 26 : 32} c={hov ? C.white : sc.c} />
+                </div>
+                <div style={{ fontFamily: serif, fontSize: mob ? 15 : 19, fontWeight: 700, color: hov ? C.white : sc.c, marginBottom: 3 }}>{sc.name}</div>
+                <p style={{ fontFamily: font, fontSize: mob ? 11 : 11.5, color: hov ? "rgba(255,255,255,.82)" : C.g500, margin: 0 }}>{sc.desc}</p>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // ═══ TESTIMONIALS ═══
 const TestimonialsSection = () => { const { mob } = useVP(); return (<section style={{ padding: mob ? "40px 0" : "64px 0", background: C.off }}><div style={wrap(mob)}><SH label="Real Reviews" title="Loved by Our Community" /><div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(3, 1fr)", gap: mob ? 12 : 20 }}>{testimonials.map((t, i) => (<div key={i} style={{ background: C.white, borderRadius: 14, padding: mob ? "20px 16px" : "24px 22px", border: `1px solid ${C.g100}` }}><Stars r={t.r} s={12} /><p style={{ fontFamily: font, fontSize: 13.5, color: C.g700, lineHeight: 1.65, margin: "10px 0 14px", fontStyle: "italic" }}>&ldquo;{t.text}&rdquo;</p><div style={{ borderTop: `1px solid ${C.g100}`, paddingTop: 12, display: "flex", alignItems: "center", justifyContent: "space-between" }}><div style={{ display: "flex", alignItems: "center", gap: 8 }}><div style={{ width: 32, height: 32, borderRadius: "50%", background: C.brandFaint, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: serif, fontSize: 14, fontWeight: 700, color: C.brand }}>{t.av}</div><div><div style={{ fontFamily: font, fontSize: 12, fontWeight: 700, color: C.brand }}>{t.name}</div><div style={{ fontFamily: font, fontSize: 10.5, color: C.g400 }}>{t.loc}</div></div></div><span style={{ fontFamily: font, fontSize: 10, color: C.accent, fontWeight: 600, background: C.accentLight, padding: "3px 8px", borderRadius: 20 }}>{t.prod}</span></div></div>))}</div></div></section>); };
