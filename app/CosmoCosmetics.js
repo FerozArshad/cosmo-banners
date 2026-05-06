@@ -379,7 +379,7 @@ const Hero = () => {
         overflow: "hidden",
         background: C.white,
       }}>
-        <img src={slides[c].b} alt={slides[c].n} style={{ ...bannerImgStyle, objectFit: "contain", transition: "opacity .5s" }} />
+        <img src={slides[c].b} alt={slides[c].n} style={{ ...bannerImgStyle, objectFit: "contain", objectPosition: "top center", transition: "opacity .5s" }} />
         {!mob && <>
           <button onClick={() => setC((c - 1 + slides.length) % slides.length)} style={{ position: "absolute", top: "50%", left: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevL s={22} /></button>
           <button onClick={() => setC((c + 1) % slides.length)} style={{ position: "absolute", top: "50%", right: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevR s={22} /></button>
