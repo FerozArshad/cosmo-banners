@@ -362,7 +362,7 @@ const Hero = () => {
       <div style={{
         position: "relative",
         width: "100%",
-        height: isMobileLike ? "78vh" : "62vh",
+        height: isMobileLike ? "78vh" : "66vh",
         maxHeight: isMobileLike ? 820 : 720,
         minHeight: isMobileLike ? 520 : 520,
         overflow: "hidden",
@@ -540,7 +540,7 @@ const CategoryPage = ({ catKey, cur, go }) => {
 
 // ═══ MAIN ═══
 export default function CosmoCosmetics() {
-  const [cur, setCur] = useState("AED");
+  const [cur, setCur] = useState("USD");
   const [lang, setLang] = useState("en");
   const [page, setPage] = useState("home");
   const go = (p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); };
