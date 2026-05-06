@@ -267,11 +267,11 @@ const Header = ({ page, go }) => {
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 100, background: sc ? "rgba(255,255,255,.98)" : C.white, backdropFilter: sc ? "blur(12px)" : "none", boxShadow: sc ? "0 2px 20px rgba(0,0,0,.06)" : "none", transition: "all .3s" }}>
-      <div style={{ ...wrap(mob), display: "flex", alignItems: "center", justifyContent: "space-between", height: mob ? 56 : 64 }}>
-        {mob && <button onClick={() => setMo(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700 }}><Ic.Menu /></button>}
-        <a href="#" onClick={e => { e.preventDefault(); go("home"); }} style={{ textDecoration: "none" }}>
+      <div style={{ ...wrap(mob), display: "flex", alignItems: "center", justifyContent: mob ? "center" : "space-between", height: mob ? 64 : 64, position: "relative" }}>
+        {mob && <button onClick={() => setMo(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700, position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", zIndex: 2 }}><Ic.Menu /></button>}
+        <a href="#" onClick={e => { e.preventDefault(); go("home"); }} style={{ textDecoration: "none", position: mob ? "absolute" : "static", left: mob ? "50%" : "auto", top: mob ? "50%" : "auto", transform: mob ? "translate(-50%, -50%)" : "none", zIndex: 1 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: mob ? 32 : 40, width: "auto" }} />
+          <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: mob ? 40 : 44, width: "auto", display: "block", imageRendering: "auto" }} />
         </a>
         {!mob && (
           <div style={{ flex: 1, maxWidth: tab ? 300 : 460, margin: "0 32px", position: "relative" }}>
@@ -281,13 +281,13 @@ const Header = ({ page, go }) => {
             <button style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: C.g400 }}><Ic.Search s={16} /></button>
           </div>
         )}
-        <div style={{ display: "flex", alignItems: "center", gap: mob ? 10 : 8 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: mob ? 8 : 8, position: mob ? "absolute" : "static", right: mob ? 16 : "auto", top: mob ? "50%" : "auto", transform: mob ? "translateY(-50%)" : "none", zIndex: 2 }}>
           {mob && <button style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700 }}><Ic.Search s={20} /></button>}
           {!mob && <>
             <button style={{ background: "none", border: "none", cursor: "pointer", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5, color: C.g700, fontFamily: font, fontSize: 12.5, fontWeight: 500 }}><Ic.User s={18} />{!tab && "Account"}</button>
             <button style={{ background: "none", border: "none", cursor: "pointer", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5, color: C.g700, fontFamily: font, fontSize: 12.5, fontWeight: 500 }}><Ic.Heart s={18} />{!tab && "Wishlist"}</button>
           </>}
-          <button style={{ background: C.brand, border: "none", cursor: "pointer", padding: mob ? "7px 12px" : "8px 16px", display: "flex", alignItems: "center", gap: 6, color: C.white, fontFamily: font, fontSize: 12, fontWeight: 600, borderRadius: 50 }}>
+          <button style={{ background: C.brand, border: "none", cursor: "pointer", padding: mob ? "7px 10px" : "8px 16px", display: "flex", alignItems: "center", gap: 6, color: C.white, fontFamily: font, fontSize: 12, fontWeight: 600, borderRadius: 50 }}>
             <Ic.Bag s={16} c={C.white} />{!mob && "Cart"}<span style={{ background: C.accent, borderRadius: "50%", width: 18, height: 18, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700 }}>2</span>
           </button>
         </div>
@@ -362,13 +362,13 @@ const Hero = () => {
       <div style={{
         position: "relative",
         width: "100%",
-        height: isMobileLike ? "78vh" : "66vh",
-        maxHeight: isMobileLike ? 820 : 720,
-        minHeight: isMobileLike ? 520 : 520,
+        height: isMobileLike ? "86vh" : "86vh",
+        maxHeight: isMobileLike ? 900 : 980,
+        minHeight: isMobileLike ? 580 : 680,
         overflow: "hidden",
-        background: C.g100,
+        background: C.white,
       }}>
-        <img src={slides[c].b} alt={slides[c].n} style={{ ...bannerImgStyle, transition: "opacity .5s" }} />
+        <img src={slides[c].b} alt={slides[c].n} style={{ ...bannerImgStyle, objectFit: "cover", transition: "opacity .5s" }} />
         {!mob && <>
           <button onClick={() => setC((c - 1 + slides.length) % slides.length)} style={{ position: "absolute", top: "50%", left: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevL s={22} /></button>
           <button onClick={() => setC((c + 1) % slides.length)} style={{ position: "absolute", top: "50%", right: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevR s={22} /></button>
