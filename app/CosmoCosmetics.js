@@ -68,7 +68,7 @@ const bannerImgStyle = {
 };
 
 const C = {
-  brand: "#2E2A6E", brandDark: "#1E1A50", brandLight: "#4842A8",
+  brand: "#312783", brandDark: "#1E1A50", brandLight: "#4842A8",
   brandFaint: "#EEEDFA", brandMist: "#F6F5FF",
   accent: "#E25D78", accentLight: "#FFF0F3",
   gold: "#C9A44C", cream: "#FFFBF7",
