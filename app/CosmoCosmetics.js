@@ -187,7 +187,7 @@ const navItems = [
   { key: "all", label: "All Products" },
   { key: "best-sellers", label: "Best Sellers" },
   { key: "bath-body", label: "Bath & Body" },
-  { key: "hair", label: "Hair" },
+  { key: "hair", label: "Hair Care" },
   { key: "delicious", label: "Delicious" },
   { key: "botanix", label: "Botanix" },
   { key: "urea", label: "Urea" },
@@ -433,6 +433,15 @@ const Bestsellers = ({ cur }) => { const { mob, tab } = useVP(); return (<sectio
 // ═══ OUR BRANDS (compact) ═══
 const BrandsSection = ({ go }) => {
   const { mob, tab } = useVP();
+  const brandImg = (hov) => ({
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    objectPosition: "center",
+    transition: "transform .35s",
+    transform: hov ? "scale(1.02)" : "scale(1)",
+    display: "block",
+  });
   const ranges = [
     { key: "botanix", name: "Botanix", color: C.green, thumb: THUMBS.botanix },
     { key: "delicious", name: "Delicious", color: C.pink, thumb: THUMBS.delicious },
@@ -453,7 +462,9 @@ const BrandsSection = ({ go }) => {
           <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8, WebkitOverflowScrolling: "touch" }}>
             {ranges.map(r => (
               <a key={r.key} href="#" onClick={e => { e.preventDefault(); go(r.key); }} style={{ flex: "0 0 110px", textDecoration: "none", textAlign: "center" }}>
-                <div style={{ width: 110, height: 110, borderRadius: 16, overflow: "hidden", border: `2px solid ${C.g100}`, marginBottom: 6 }}><img src={r.thumb} alt={r.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+                <div style={{ width: 110, height: 110, borderRadius: 16, overflow: "hidden", border: `2px solid ${C.g100}`, marginBottom: 6, background: C.white }}>
+                  <img src={r.thumb} alt={r.name} style={brandImg(false)} />
+                </div>
                 <span style={{ fontFamily: font, fontSize: 11.5, fontWeight: 600, color: r.color }}>{r.name}</span>
               </a>
             ))}
@@ -465,7 +476,9 @@ const BrandsSection = ({ go }) => {
               return (
                 <a key={r.key} href="#" onClick={e => { e.preventDefault(); go(r.key); }} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
                   style={{ textDecoration: "none", borderRadius: 14, overflow: "hidden", background: C.white, border: `1px solid ${C.g100}`, transition: "all .3s", transform: hov ? "translateY(-4px)" : "none", boxShadow: hov ? `0 12px 32px ${r.color}20` : "none" }}>
-                  <div style={{ height: tab ? 80 : 100, overflow: "hidden" }}><img src={r.thumb} alt={r.name} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform .4s", transform: hov ? "scale(1.06)" : "scale(1)" }} /></div>
+                  <div style={{ height: tab ? 80 : 100, overflow: "hidden", background: C.white }}>
+                    <img src={r.thumb} alt={r.name} style={brandImg(hov)} />
+                  </div>
                   <div style={{ padding: "10px 12px", textAlign: "center", borderTop: `3px solid ${r.color}` }}><span style={{ fontFamily: serif, fontSize: 15, fontWeight: 700, color: r.color }}>{r.name}</span></div>
                 </a>
               );
