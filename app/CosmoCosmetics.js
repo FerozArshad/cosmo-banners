@@ -342,7 +342,7 @@ const Header = ({ page, go }) => {
   );
 };
 
-// ═══ HERO — 70vh desktop, 85vh mobile/tablet ═══
+// ═══ HERO — full width, taller ═══
 const Hero = () => {
   const { mob, tab } = useVP();
   const [c, setC] = useState(0);
@@ -357,8 +357,16 @@ const Hero = () => {
   useEffect(() => { const t = setInterval(() => setC(i => (i + 1) % slides.length), 5000); return () => clearInterval(t); }, []);
 
   return (
-    <section style={{ padding: mob ? "8px 8px" : "16px 28px", maxWidth: 1380, margin: "0 auto" }}>
-      <div style={{ ...bannerBoxStyle(isMobileLike), maxHeight: isMobileLike ? 520 : 520, margin: "0 auto" }}>
+    <section style={{ width: "100%" }}>
+      <div style={{
+        position: "relative",
+        width: "100%",
+        height: isMobileLike ? "78vh" : "62vh",
+        maxHeight: isMobileLike ? 820 : 720,
+        minHeight: isMobileLike ? 520 : 520,
+        overflow: "hidden",
+        background: C.g100,
+      }}>
         <img src={slides[c].b} alt={slides[c].n} style={{ ...bannerImgStyle, transition: "opacity .5s" }} />
         {!mob && <>
           <button onClick={() => setC((c - 1 + slides.length) % slides.length)} style={{ position: "absolute", top: "50%", left: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevL s={22} /></button>
