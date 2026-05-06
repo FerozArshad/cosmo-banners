@@ -227,11 +227,11 @@ const TopBar = ({ cur, setCur, lang, setLang }) => {
   const cc = currencies.find(c => c.code === cur);
   const ll = languages.find(l => l.code === lang);
 
-  if (compact) return <div style={{ background: C.brand, color: C.white, textAlign: "center", padding: "4px 10px", fontSize: 10.5, fontFamily: font, fontWeight: 600 }}>{promos[pi]}</div>;
+  if (compact) return <div style={{ background: C.brand, color: C.white, textAlign: "center", padding: "6px 12px", fontSize: 11.5, fontFamily: font, fontWeight: 600 }}>{promos[pi]}</div>;
 
   return (
     <div style={{ background: C.brand, color: C.white }}>
-      <div style={{ ...wrap(false), display: "flex", alignItems: "center", justifyContent: "space-between", height: 12, fontSize: 10.5, fontFamily: font, fontWeight: 500 }}>
+      <div style={{ ...wrap(false), display: "flex", alignItems: "center", justifyContent: "space-between", height: 28, fontSize: 12, fontFamily: font, fontWeight: 500 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <DD open={co} toggle={() => { setCo(!co); setLo(false); }} close={() => setCo(false)}
             trigger={<>{cc.flag} {cc.code} <Ic.ChevD s={10} c="rgba(255,255,255,.7)" /></>}
@@ -269,19 +269,19 @@ const Header = ({ page, go }) => {
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 100, background: sc ? "rgba(255,255,255,.98)" : C.white, backdropFilter: sc ? "blur(12px)" : "none", boxShadow: sc ? "0 2px 20px rgba(0,0,0,.06)" : "none", transition: "all .3s" }}>
-      <div style={{ ...wrap(compact), display: "flex", alignItems: "center", justifyContent: "space-between", height: compact ? 32 : 30, position: "relative" }}>
+      <div style={{ ...wrap(compact), display: "flex", alignItems: "center", justifyContent: "space-between", height: compact ? 52 : 52, position: "relative" }}>
         {compact ? (
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <button onClick={() => setMo(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700 }}><Ic.Menu /></button>
             <a href="#" onClick={e => { e.preventDefault(); go("home"); }} style={{ textDecoration: "none" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: 30, width: "auto", display: "block", imageRendering: "auto" }} />
+              <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: 36, width: "auto", display: "block", imageRendering: "auto" }} />
             </a>
           </div>
         ) : (
           <a href="#" onClick={e => { e.preventDefault(); go("home"); }} style={{ textDecoration: "none" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: 32, width: "auto", display: "block", imageRendering: "auto" }} />
+            <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: 44, width: "auto", display: "block", imageRendering: "auto" }} />
           </a>
         )}
         {!compact && (
@@ -304,17 +304,17 @@ const Header = ({ page, go }) => {
         </div>
       </div>
       {!compact && (
-        <nav style={{ ...wrap(false), display: "flex", alignItems: "center", borderTop: `1px solid ${C.g100}`, height: 18 }}>
+        <nav style={{ ...wrap(false), display: "flex", alignItems: "center", borderTop: `1px solid ${C.g100}`, height: 34 }}>
           {navItems.map((ni, idx) => {
             const cat = CAT[ni.key];
             return (
               <div key={ni.key} style={{ position: "relative" }} onMouseEnter={() => setHn(idx)} onMouseLeave={() => setHn(null)}>
                 <a href="#" onClick={e => { e.preventDefault(); go(ni.key); setHn(null); }}
-                  style={{ display: "flex", alignItems: "center", gap: 3, padding: "0 10px", height: 18, fontFamily: font, fontSize: 11.5, fontWeight: 600, color: hn === idx || page === ni.key ? C.brand : C.g700, textDecoration: "none", borderBottom: hn === idx || page === ni.key ? `2px solid ${C.brand}` : "2px solid transparent" }}>
+                  style={{ display: "flex", alignItems: "center", gap: 4, padding: "0 14px", height: 34, fontFamily: font, fontSize: 13, fontWeight: 600, color: hn === idx || page === ni.key ? C.brand : C.g700, textDecoration: "none", borderBottom: hn === idx || page === ni.key ? `2px solid ${C.brand}` : "2px solid transparent" }}>
                   {ni.label}{cat?.sub && <Ic.ChevD s={10} c={hn === idx ? C.brand : C.g400} />}
                 </a>
                 {cat?.sub && hn === idx && (
-                  <div style={{ position: "absolute", top: 18, left: 0, background: C.white, borderRadius: "0 0 12px 12px", boxShadow: "0 12px 40px rgba(0,0,0,.1)", border: `1px solid ${C.g100}`, borderTop: `2px solid ${C.brand}`, width: tab ? 380 : 540, zIndex: 200, overflow: "hidden", display: "flex" }}>
+                  <div style={{ position: "absolute", top: 34, left: 0, background: C.white, borderRadius: "0 0 12px 12px", boxShadow: "0 12px 40px rgba(0,0,0,.1)", border: `1px solid ${C.g100}`, borderTop: `2px solid ${C.brand}`, width: tab ? 380 : 540, zIndex: 200, overflow: "hidden", display: "flex" }}>
                     <div style={{ flex: "0 0 180px", padding: "12px 0" }}>
                       {cat.sub.map(s => <a key={s} href="#" style={{ display: "block", padding: "8px 18px", fontFamily: font, fontSize: 13, color: C.g600, textDecoration: "none" }} onMouseEnter={e => { e.target.style.background = C.brandFaint; e.target.style.color = C.brand; }} onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.color = C.g600; }}>{s}</a>)}
                       <div style={{ padding: "8px 18px", marginTop: 4 }}>
