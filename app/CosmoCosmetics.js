@@ -230,7 +230,7 @@ const TopBar = ({ cur, setCur, lang, setLang }) => {
 
   return (
     <div style={{ background: C.brand, color: C.white }}>
-      <div style={{ ...wrap(false), display: "flex", alignItems: "center", justifyContent: "space-between", height: 36, fontSize: 12, fontFamily: font, fontWeight: 500 }}>
+      <div style={{ ...wrap(false), display: "flex", alignItems: "center", justifyContent: "space-between", height: 32, fontSize: 12, fontFamily: font, fontWeight: 500 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <DD open={co} toggle={() => { setCo(!co); setLo(false); }} close={() => setCo(false)}
             trigger={<>{cc.flag} {cc.code} <Ic.ChevD s={10} c="rgba(255,255,255,.7)" /></>}
@@ -267,7 +267,7 @@ const Header = ({ page, go }) => {
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 100, background: sc ? "rgba(255,255,255,.98)" : C.white, backdropFilter: sc ? "blur(12px)" : "none", boxShadow: sc ? "0 2px 20px rgba(0,0,0,.06)" : "none", transition: "all .3s" }}>
-      <div style={{ ...wrap(mob), display: "flex", alignItems: "center", justifyContent: "space-between", height: 64, position: "relative" }}>
+      <div style={{ ...wrap(mob), display: "flex", alignItems: "center", justifyContent: "space-between", height: mob ? 60 : 60, position: "relative" }}>
         {mob ? (
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <button onClick={() => setMo(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700 }}><Ic.Menu /></button>
@@ -302,17 +302,17 @@ const Header = ({ page, go }) => {
         </div>
       </div>
       {!mob && (
-        <nav style={{ ...wrap(false), display: "flex", alignItems: "center", borderTop: `1px solid ${C.g100}`, height: 42 }}>
+        <nav style={{ ...wrap(false), display: "flex", alignItems: "center", borderTop: `1px solid ${C.g100}`, height: 38 }}>
           {navItems.map((ni, idx) => {
             const cat = CAT[ni.key];
             return (
               <div key={ni.key} style={{ position: "relative" }} onMouseEnter={() => setHn(idx)} onMouseLeave={() => setHn(null)}>
                 <a href="#" onClick={e => { e.preventDefault(); go(ni.key); setHn(null); }}
-                  style={{ display: "flex", alignItems: "center", gap: 4, padding: "0 14px", height: 42, fontFamily: font, fontSize: 13, fontWeight: 600, color: hn === idx || page === ni.key ? C.brand : C.g700, textDecoration: "none", borderBottom: hn === idx || page === ni.key ? `2px solid ${C.brand}` : "2px solid transparent" }}>
+                  style={{ display: "flex", alignItems: "center", gap: 4, padding: "0 14px", height: 38, fontFamily: font, fontSize: 13, fontWeight: 600, color: hn === idx || page === ni.key ? C.brand : C.g700, textDecoration: "none", borderBottom: hn === idx || page === ni.key ? `2px solid ${C.brand}` : "2px solid transparent" }}>
                   {ni.label}{cat?.sub && <Ic.ChevD s={10} c={hn === idx ? C.brand : C.g400} />}
                 </a>
                 {cat?.sub && hn === idx && (
-                  <div style={{ position: "absolute", top: 42, left: 0, background: C.white, borderRadius: "0 0 12px 12px", boxShadow: "0 12px 40px rgba(0,0,0,.1)", border: `1px solid ${C.g100}`, borderTop: `2px solid ${C.brand}`, width: tab ? 380 : 540, zIndex: 200, overflow: "hidden", display: "flex" }}>
+                  <div style={{ position: "absolute", top: 38, left: 0, background: C.white, borderRadius: "0 0 12px 12px", boxShadow: "0 12px 40px rgba(0,0,0,.1)", border: `1px solid ${C.g100}`, borderTop: `2px solid ${C.brand}`, width: tab ? 380 : 540, zIndex: 200, overflow: "hidden", display: "flex" }}>
                     <div style={{ flex: "0 0 180px", padding: "12px 0" }}>
                       {cat.sub.map(s => <a key={s} href="#" style={{ display: "block", padding: "8px 18px", fontFamily: font, fontSize: 13, color: C.g600, textDecoration: "none" }} onMouseEnter={e => { e.target.style.background = C.brandFaint; e.target.style.color = C.brand; }} onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.color = C.g600; }}>{s}</a>)}
                       <div style={{ padding: "8px 18px", marginTop: 4 }}>
@@ -371,12 +371,18 @@ const Hero = () => {
       <div style={{
         position: "relative",
         width: "100%",
-        height: isMobileLike ? "73vh" : "76vh",
-        maxHeight: isMobileLike ? 780 : 860,
-        minHeight: isMobileLike ? 480 : 560,
+        height: isMobileLike ? "70vh" : "74vh",
+        maxHeight: isMobileLike ? 760 : 880,
+        minHeight: isMobileLike ? 460 : 540,
         overflow: "hidden",
-        background: C.white,
+        background: C.g100,
       }}>
+        <img
+          src={slides[c].b}
+          alt=""
+          aria-hidden="true"
+          style={{ ...bannerImgStyle, objectFit: "cover", filter: "blur(12px)", transform: "scale(1.06)", opacity: 0.28 }}
+        />
         <img src={slides[c].b} alt={slides[c].n} style={{ ...bannerImgStyle, objectFit: "contain", transition: "opacity .5s" }} />
         {!mob && <>
           <button onClick={() => setC((c - 1 + slides.length) % slides.length)} style={{ position: "absolute", top: "50%", left: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevL s={22} /></button>
