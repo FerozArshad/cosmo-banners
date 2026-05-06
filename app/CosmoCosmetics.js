@@ -217,7 +217,8 @@ const DD = ({ trigger, items, open, toggle, close }) => {
 
 // ═══ TOP BAR ═══
 const TopBar = ({ cur, setCur, lang, setLang }) => {
-  const { mob } = useVP();
+  const { mob, tab } = useVP();
+  const compact = mob || tab;
   const [co, setCo] = useState(false);
   const [lo, setLo] = useState(false);
   const [pi, setPi] = useState(0);
@@ -226,7 +227,7 @@ const TopBar = ({ cur, setCur, lang, setLang }) => {
   const cc = currencies.find(c => c.code === cur);
   const ll = languages.find(l => l.code === lang);
 
-  if (mob) return <div style={{ background: C.brand, color: C.white, textAlign: "center", padding: "8px 16px", fontSize: 11.5, fontFamily: font, fontWeight: 600 }}>{promos[pi]}</div>;
+  if (compact) return <div style={{ background: C.brand, color: C.white, textAlign: "center", padding: "6px 12px", fontSize: 11.5, fontFamily: font, fontWeight: 600 }}>{promos[pi]}</div>;
 
   return (
     <div style={{ background: C.brand, color: C.white }}>
@@ -260,6 +261,7 @@ const TopBar = ({ cur, setCur, lang, setLang }) => {
 // ═══ HEADER ═══
 const Header = ({ page, go }) => {
   const { mob, tab } = useVP();
+  const compact = mob || tab;
   const [sc, setSc] = useState(false);
   const [mo, setMo] = useState(false);
   const [hn, setHn] = useState(null);
@@ -267,13 +269,13 @@ const Header = ({ page, go }) => {
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 100, background: sc ? "rgba(255,255,255,.98)" : C.white, backdropFilter: sc ? "blur(12px)" : "none", boxShadow: sc ? "0 2px 20px rgba(0,0,0,.06)" : "none", transition: "all .3s" }}>
-      <div style={{ ...wrap(mob), display: "flex", alignItems: "center", justifyContent: "space-between", height: mob ? 56 : 52, position: "relative" }}>
-        {mob ? (
+      <div style={{ ...wrap(compact), display: "flex", alignItems: "center", justifyContent: "space-between", height: compact ? 52 : 52, position: "relative" }}>
+        {compact ? (
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <button onClick={() => setMo(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700 }}><Ic.Menu /></button>
             <a href="#" onClick={e => { e.preventDefault(); go("home"); }} style={{ textDecoration: "none" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: 40, width: "auto", display: "block", imageRendering: "auto" }} />
+              <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: 36, width: "auto", display: "block", imageRendering: "auto" }} />
             </a>
           </div>
         ) : (
@@ -282,7 +284,7 @@ const Header = ({ page, go }) => {
             <img src={LOGO} alt="Cosmo Cosmetics" style={{ height: 44, width: "auto", display: "block", imageRendering: "auto" }} />
           </a>
         )}
-        {!mob && (
+        {!compact && (
           <div style={{ flex: 1, maxWidth: tab ? 300 : 460, margin: "0 32px", position: "relative" }}>
             <input type="text" placeholder="Search products, ranges..." style={{ width: "100%", padding: "10px 40px 10px 16px", border: `1.5px solid ${C.g200}`, borderRadius: 50, fontSize: 13, fontFamily: font, outline: "none", background: C.g50, boxSizing: "border-box" }}
               onFocus={e => { e.target.style.borderColor = C.brand; e.target.style.background = C.white; }}
@@ -291,17 +293,17 @@ const Header = ({ page, go }) => {
           </div>
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          {mob && <button style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700 }}><Ic.Search s={20} /></button>}
-          {!mob && <>
+          {compact && <button style={{ background: "none", border: "none", cursor: "pointer", padding: 4, color: C.g700 }}><Ic.Search s={20} /></button>}
+          {!compact && <>
             <button style={{ background: "none", border: "none", cursor: "pointer", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5, color: C.g700, fontFamily: font, fontSize: 12.5, fontWeight: 500 }}><Ic.User s={18} />{!tab && "Account"}</button>
             <button style={{ background: "none", border: "none", cursor: "pointer", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5, color: C.g700, fontFamily: font, fontSize: 12.5, fontWeight: 500 }}><Ic.Heart s={18} />{!tab && "Wishlist"}</button>
           </>}
-          <button style={{ background: C.brand, border: "none", cursor: "pointer", padding: mob ? "7px 10px" : "8px 16px", display: "flex", alignItems: "center", gap: 6, color: C.white, fontFamily: font, fontSize: 12, fontWeight: 600, borderRadius: 50 }}>
-            <Ic.Bag s={16} c={C.white} />{!mob && "Cart"}<span style={{ background: C.accent, borderRadius: "50%", width: 18, height: 18, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700 }}>2</span>
+          <button style={{ background: C.brand, border: "none", cursor: "pointer", padding: compact ? "6px 9px" : "8px 16px", display: "flex", alignItems: "center", gap: 6, color: C.white, fontFamily: font, fontSize: 12, fontWeight: 600, borderRadius: 50 }}>
+            <Ic.Bag s={16} c={C.white} />{!compact && "Cart"}<span style={{ background: C.accent, borderRadius: "50%", width: 18, height: 18, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700 }}>2</span>
           </button>
         </div>
       </div>
-      {!mob && (
+      {!compact && (
         <nav style={{ ...wrap(false), display: "flex", alignItems: "center", borderTop: `1px solid ${C.g100}`, height: 34 }}>
           {navItems.map((ni, idx) => {
             const cat = CAT[ni.key];
@@ -329,7 +331,7 @@ const Header = ({ page, go }) => {
           })}
         </nav>
       )}
-      {mob && mo && (
+      {compact && mo && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex" }}>
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.4)" }} onClick={() => setMo(false)} />
           <div style={{ position: "relative", width: 300, maxWidth: "85vw", background: C.white, height: "100%", overflowY: "auto", boxShadow: "4px 0 24px rgba(0,0,0,.1)", animation: "slideIn .2s ease" }}>
