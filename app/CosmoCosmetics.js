@@ -369,13 +369,14 @@ const Hero = () => {
   useEffect(() => { const t = setInterval(() => setC(i => (i + 1) % slides.length), 5000); return () => clearInterval(t); }, []);
 
   return (
-    <section style={{ width: "100%" }}>
+    <section style={{ width: "100%", paddingTop: 20 }}>
       <div style={{
         position: "relative",
         width: "100%",
-        height: isMobileLike ? "73vh" : "76vh",
-        maxHeight: isMobileLike ? 780 : 860,
-        minHeight: isMobileLike ? 480 : 560,
+        height: isMobileLike ? "73vh" : "auto",
+        aspectRatio: isMobileLike ? undefined : "1530 / 410",
+        maxHeight: isMobileLike ? 780 : undefined,
+        minHeight: isMobileLike ? 480 : undefined,
         overflow: "hidden",
         background: C.white,
       }}>
