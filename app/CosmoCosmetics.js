@@ -151,8 +151,8 @@ const concerns = [
 // ─── Category Data ───
 const CAT = {
   "hair": { name: "Hair Care", banner: "hair", thumb: THUMBS.hair, color: "#1A3050", sub: ["Shampoo", "Conditioner", "Hair Mask", "Hair Oil", "Hijab Care", "Keratin"], desc: "Premium quality hair care for all types" },
-  "bath-body": { name: "Bath & Body", banner: "shea", thumb: THUMBS.shea, color: "#D46A2E", sub: ["Body Lotion", "Body Wash", "Scrubs", "Hand Cream", "Shower Gel"], desc: "Luxurious body care for every skin type" },
-  "delicious": { name: "Delicious", banner: "delicious", thumb: THUMBS.delicious, color: C.pink, sub: ["Body Lotion", "Shower Gel", "Body Mist", "Hand Cream"], desc: "Gourmet skin treats crafted to care" },
+  "bath-body": { name: "Bath & Body", banner: "shea", thumb: THUMBS.shea, color: "#D46A2E", sub: ["Body Lotion", "Body Wash", "Scrubs", "Hand Cream"], desc: "Luxurious body care for every skin type" },
+  "delicious": { name: "Delicious", banner: "delicious", thumb: THUMBS.delicious, color: C.pink, sub: ["Body Lotion", "Body Wash", "Body Mist", "Hand Cream"], desc: "Gourmet skin treats crafted to care" },
   "botanix": { name: "Botanix", banner: "botanix", thumb: THUMBS.botanix, color: C.green, sub: ["Shampoo", "Face & Body Scrub", "Hair & Scalp Mask"], desc: "100% natural tea tree range" },
   "urea": { name: "Urea Advanced", banner: "urea", thumb: THUMBS.urea, color: C.blue, sub: ["Body Lotion", "Body Wash", "Face Cream", "Hand Cream"], desc: "5% urea repair for extremely dry skin" },
   "anti-perspirants": { name: "Anti-Perspirants", banner: "antiPerspirant", thumb: THUMBS.men, color: C.teal, sub: ["Invisible Dry", "Pure Sport", "Clean Comfort", "Fresh Natural", "Ice Dive"], desc: "48hr 6-in-1 protection" },
@@ -185,12 +185,13 @@ const PRODUCTS = [
 
 const navItems = [
   { key: "all", label: "All Products" },
-  { key: "hair", label: "Hair" },
+  { key: "best-sellers", label: "Best Sellers" },
   { key: "bath-body", label: "Bath & Body" },
+  { key: "hair", label: "Hair" },
   { key: "delicious", label: "Delicious" },
   { key: "botanix", label: "Botanix" },
   { key: "urea", label: "Urea" },
-  { key: "best-sellers", label: "Best Sellers" },
+  { key: "suncare", label: "Sun Care" },
   { key: "anti-perspirants", label: "Anti-Perspirants" },
 ];
 
