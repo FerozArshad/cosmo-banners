@@ -433,6 +433,7 @@ const Bestsellers = ({ cur }) => { const { mob, tab } = useVP(); return (<sectio
 // ═══ OUR BRANDS (compact) ═══
 const BrandsSection = ({ go }) => {
   const { mob, tab } = useVP();
+  const isMobileLike = mob || tab;
   const brandImg = (hov) => ({
     width: "100%",
     height: "100%",
@@ -442,17 +443,34 @@ const BrandsSection = ({ go }) => {
     transform: hov ? "scale(1.02)" : "scale(1)",
     display: "block",
   });
+
+  const brandBannerKey = (k) => {
+    if (k === "shea-scrub") return "shea";
+    if (k === "suncare") return "sunCare";
+    if (k === "anti-perspirants") return "antiPerspirant";
+    return k;
+  };
+
+  const brandMediaBox = (k) => ({
+    width: "100%",
+    aspectRatio: isMobileLike ? `${430} / ${480}` : `${1530} / ${410}`,
+    overflow: "hidden",
+    background: C.white,
+    borderRadius: 16,
+    border: `1px solid ${C.g100}`,
+  });
+
   const ranges = [
-    { key: "botanix", name: "Botanix", color: C.green, thumb: THUMBS.botanix },
-    { key: "delicious", name: "Delicious", color: C.pink, thumb: THUMBS.delicious },
-    { key: "glutathione", name: "Glutathione", color: C.purple, thumb: THUMBS.glutathione },
-    { key: "hair", name: "Hair Naturals", color: "#1A3050", thumb: THUMBS.hair },
-    { key: "hijab", name: "Hijab Care", color: C.g700, thumb: THUMBS.hijab },
-    { key: "q10", name: "Q10", color: "#1A3A6B", thumb: THUMBS.q10 },
-    { key: "shea-scrub", name: "Shea Scrub", color: "#D46A2E", thumb: THUMBS.shea },
-    { key: "suncare", name: "Sun Care", color: C.orange, thumb: THUMBS.sunCare },
-    { key: "urea", name: "Urea", color: C.blue, thumb: THUMBS.urea },
-    { key: "anti-perspirants", name: "Men", color: C.teal, thumb: THUMBS.men },
+    { key: "botanix", name: "Botanix", color: C.green },
+    { key: "delicious", name: "Delicious", color: C.pink },
+    { key: "glutathione", name: "Glutathione", color: C.purple },
+    { key: "hair", name: "Hair Naturals", color: "#1A3050" },
+    { key: "hijab", name: "Hijab Care", color: C.g700 },
+    { key: "q10", name: "Q10", color: "#1A3A6B" },
+    { key: "shea-scrub", name: "Shea Scrub", color: "#D46A2E" },
+    { key: "suncare", name: "Sun Care", color: C.orange },
+    { key: "urea", name: "Urea", color: C.blue },
+    { key: "anti-perspirants", name: "Men", color: C.teal },
   ];
   return (
     <section style={{ padding: mob ? "40px 0" : "56px 0", background: C.off }}>
@@ -461,9 +479,9 @@ const BrandsSection = ({ go }) => {
         {mob ? (
           <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8, WebkitOverflowScrolling: "touch" }}>
             {ranges.map(r => (
-              <a key={r.key} href="#" onClick={e => { e.preventDefault(); go(r.key); }} style={{ flex: "0 0 110px", textDecoration: "none", textAlign: "center" }}>
-                <div style={{ width: 110, height: 110, borderRadius: 16, overflow: "hidden", border: `2px solid ${C.g100}`, marginBottom: 6, background: C.white }}>
-                  <img src={r.thumb} alt={r.name} style={brandImg(false)} />
+              <a key={r.key} href="#" onClick={e => { e.preventDefault(); go(r.key); }} style={{ flex: "0 0 170px", textDecoration: "none", textAlign: "center" }}>
+                <div style={{ ...brandMediaBox(r.key), marginBottom: 8 }}>
+                  <img src={bannerByDevice(brandBannerKey(r.key), true)} alt={r.name} style={brandImg(false)} />
                 </div>
                 <span style={{ fontFamily: font, fontSize: 11.5, fontWeight: 600, color: r.color }}>{r.name}</span>
               </a>
@@ -476,8 +494,8 @@ const BrandsSection = ({ go }) => {
               return (
                 <a key={r.key} href="#" onClick={e => { e.preventDefault(); go(r.key); }} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
                   style={{ textDecoration: "none", borderRadius: 14, overflow: "hidden", background: C.white, border: `1px solid ${C.g100}`, transition: "all .3s", transform: hov ? "translateY(-4px)" : "none", boxShadow: hov ? `0 12px 32px ${r.color}20` : "none" }}>
-                  <div style={{ height: tab ? 80 : 100, overflow: "hidden", background: C.white }}>
-                    <img src={r.thumb} alt={r.name} style={brandImg(hov)} />
+                  <div style={{ ...brandMediaBox(r.key), borderRadius: 0, border: "none" }}>
+                    <img src={bannerByDevice(brandBannerKey(r.key), false)} alt={r.name} style={brandImg(hov)} />
                   </div>
                   <div style={{ padding: "10px 12px", textAlign: "center", borderTop: `3px solid ${r.color}` }}><span style={{ fontFamily: serif, fontSize: 15, fontWeight: 700, color: r.color }}>{r.name}</span></div>
                 </a>
