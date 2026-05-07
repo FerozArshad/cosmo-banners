@@ -152,7 +152,7 @@ const concerns = [
 const CAT = {
   "hair": { name: "Hair Care", banner: "hair", thumb: THUMBS.hair, color: "#1A3050", sub: ["Shampoo", "Conditioner", "Hair Mask", "Hair Oil", "Hijab Care", "Keratin"], desc: "Premium quality hair care for all types" },
   "bath-body": { name: "Bath & Body", banner: "shea", thumb: THUMBS.shea, color: "#D46A2E", sub: ["Body Lotion", "Body Wash", "Scrubs", "Hand Cream"], desc: "Luxurious body care for every skin type" },
-  "delicious": { name: "Delicious", banner: "delicious", thumb: THUMBS.delicious, color: C.pink, sub: ["Body Lotion", "Body Wash", "Body Mist", "Hand Cream"], desc: "Gourmet skin treats crafted to care" },
+  "delicious": { name: "Delicious", banner: "delicious", thumb: THUMBS.delicious, color: C.pink, sub: ["Body Lotion", "Body Wash"], desc: "Gourmet skin treats crafted to care" },
   "botanix": { name: "Botanix", banner: "botanix", thumb: THUMBS.botanix, color: C.green, sub: ["Shampoo", "Face & Body Scrub", "Hair & Scalp Mask"], desc: "100% natural tea tree range" },
   "urea": { name: "Urea Advanced", banner: "urea", thumb: THUMBS.urea, color: C.blue, sub: ["Body Lotion", "Body Wash", "Face Cream", "Hand Cream"], desc: "5% urea repair for extremely dry skin" },
   "anti-perspirants": { name: "Anti-Perspirants", banner: "antiPerspirant", thumb: THUMBS.men, color: C.teal, sub: ["Invisible Dry", "Pure Sport", "Clean Comfort", "Fresh Natural", "Ice Dive"], desc: "48hr 6-in-1 protection" },
@@ -373,8 +373,8 @@ const Hero = () => {
       <div style={{
         position: "relative",
         width: "100%",
-        height: isMobileLike ? "73vh" : "auto",
-        aspectRatio: isMobileLike ? undefined : "1530 / 410",
+        height: isMobileLike ? "68vh" : "auto",
+        aspectRatio: isMobileLike ? undefined : "1530 / 450",
         maxHeight: isMobileLike ? 780 : undefined,
         minHeight: isMobileLike ? 480 : undefined,
         overflow: "hidden",
@@ -385,10 +385,15 @@ const Hero = () => {
           <button onClick={() => setC((c - 1 + slides.length) % slides.length)} style={{ position: "absolute", top: "50%", left: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevL s={22} /></button>
           <button onClick={() => setC((c + 1) % slides.length)} style={{ position: "absolute", top: "50%", right: 20, transform: "translateY(-50%)", background: "rgba(255,255,255,.92)", border: "none", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.brand, boxShadow: "0 4px 12px rgba(0,0,0,.1)" }}><Ic.ChevR s={22} /></button>
         </>}
-        <div style={{ position: "absolute", bottom: mob ? 12 : 20, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, background: "rgba(255,255,255,.88)", padding: "7px 14px", borderRadius: 30 }}>
+        {!mob && <div style={{ position: "absolute", bottom: 12, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, background: "rgba(255,255,255,.88)", padding: "7px 14px", borderRadius: 30 }}>
+          {slides.map((_, i) => <button key={i} onClick={() => setC(i)} style={{ width: c === i ? 24 : 8, height: 8, borderRadius: 8, border: "none", background: c === i ? C.brand : C.g300, cursor: "pointer", transition: "all .3s" }} />)}
+        </div>}
+      </div>
+      {mob && <div style={{ display: "flex", justifyContent: "center", marginTop: 8, marginBottom: 4 }}>
+        <div style={{ display: "flex", gap: 8, background: "rgba(255,255,255,.95)", padding: "7px 14px", borderRadius: 30 }}>
           {slides.map((_, i) => <button key={i} onClick={() => setC(i)} style={{ width: c === i ? 24 : 8, height: 8, borderRadius: 8, border: "none", background: c === i ? C.brand : C.g300, cursor: "pointer", transition: "all .3s" }} />)}
         </div>
-      </div>
+      </div>}
     </section>
   );
 };
